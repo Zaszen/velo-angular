@@ -1,0 +1,29 @@
+
+
+<ion-pane>
+    <ion-header-bar class="bar-stable">
+        <h1 class="title">Ionic blank starter</h1>
+    </ion-header-bar>
+    <ion-content>
+        <ion-item ng-repeat="country in countries" >
+            {{ country.name }}
+            <a ng-href='#here' ng-click='handleClickPays(country.iso2)' >afficher/masquer contrats</a>
+            <ion-item ng-repeat="contrat in contrats" ng-if="contrat.countryIso2.toUpperCase() == country.iso2.toUpperCase()">
+                <div >
+                    <span>Ville: {{contrat.name}},</span>
+                    <span>Nom: {{contrat.brandName}}</span>
+                    <a ng-href='#here' ng-click='handleClickContrat(contrat.id)' >afficher/maquer stations</a>
+                    <ion-item ng-repeat="station in stations" ng-if="contrat.id.toUpperCase() == station.contractId.toUpperCase()">
+                        <span>Nom: {{station.name}}, </span>
+                        <span>Adresse: {{station.address}}, </span>
+                        <span>Etat: <span>{{station.open ? 'Ouvert' : 'Fermée'}}</span>, </span>
+                        <span>Vélos disponibles: {{station.availableBikes}}, </span>
+                        <span>Place vide: {{station.availableFreeSpots}}, </span>
+                        <span>Payement carte: <span>{{station.banking ? 'Oui' : 'Non'}}</span> </span>
+                    </ion-item>
+                    
+                </div>
+            </ion-item>
+        </ion-item>
+    </ion-content>
+</ion-pane>
